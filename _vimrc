@@ -63,3 +63,4 @@ set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 let g:ycm_show_diagnostics_ui = 0
+set noundofile
