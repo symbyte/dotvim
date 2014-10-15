@@ -1,6 +1,6 @@
 Initial Installation:
     cd ~/.vim/bundle (c:\user\<yourUserName>\vimfiles\bundle  --for windows) 
-    git submodule add git://github.com/symbiotez/dotvim.git 
+    git clone git://github.com/symbiotez/dotvim.git 
 
 Create symlinks:
     *nix:
