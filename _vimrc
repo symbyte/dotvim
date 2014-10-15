@@ -40,7 +40,7 @@ nnoremap <leader>db :!gdb %<<cr>
 nnoremap <leader>jvc :!javac %<cr>
 nnoremap <leader>jvr :!java %<<cr>
 colors torte
-cd C:\Users\Steve\Dropbox
+cd $home\Dropbox
 set autochdir
 set nu!
 set rnu!
