@@ -70,3 +70,4 @@ set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 let g:ycm_show_diagnostics_ui = 0
 set noundofile
+let g:neocomplcache_enable_at_startup = 1

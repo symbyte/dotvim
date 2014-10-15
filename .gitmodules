@@ -18,5 +18,5 @@
 	path = supertab
 	url = https://github.com/ervandew/supertab.git
 [submodule "neocomplcache.vim"]
-	path = neocomplcache.vim
+	path = bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim
