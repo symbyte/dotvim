@@ -14,9 +14,6 @@
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
     ignore = dirty
-[submodule "supertab"]
-	path = supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "neocomplcache.vim"]
 	path = bundle/neocomplcache.vim
 	url = https://github.com/Shougo/neocomplcache.vim
