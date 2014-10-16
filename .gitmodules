@@ -21,5 +21,5 @@
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
 [submodule "auto-pairs"]
-	path = auto-pairs
+	path = bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
