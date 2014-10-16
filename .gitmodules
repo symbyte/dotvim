@@ -20,3 +20,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule "auto-pairs"]
+	path = auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
