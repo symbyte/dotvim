@@ -74,3 +74,18 @@ let g:neocomplcache_enable_at_startup = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-f> :NERDTreeToggle<CR>
+"##############################################################################                                                                         
+" Easier split navigation                                                                                                                               
+"##############################################################################                                                                         
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
+nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
+nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
+nmap <silent> <c-l> :wincmd l<CR>
+
+" Move the splits arround!
+nmap <silent> <c-s-k> <C-W>k                                                                                                                       
+nmap <silent> <c-s-j> <C-W>j                                                                                                                       
+nmap <silent> <c-s-h> <C-W>h                                                                                                                       
+nmap <silent> <c-s-l> <C-W>l
