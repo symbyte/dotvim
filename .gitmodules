@@ -23,3 +23,6 @@
 [submodule "auto-pairs"]
 	path = bundle/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "bundle/vim-hybrid"]
+	path = bundle/vim-hybrid
+	url = https://github.com/w0ng/vim-hybrid
