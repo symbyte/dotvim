@@ -45,7 +45,7 @@ nnoremap <leader>cn :!make clean<cr>
 nnoremap <leader>db :!gdb %<<cr>
 nnoremap <leader>jvc :!javac %<cr>
 nnoremap <leader>jvr :!java %<<cr>
-colors torte
+colors hybrid 
 cd $home\Dropbox
 set autochdir
 set nu!
