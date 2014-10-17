@@ -71,3 +71,6 @@ set expandtab       " Expand TABs to spaces.
 let g:ycm_show_diagnostics_ui = 0
 set noundofile
 let g:neocomplcache_enable_at_startup = 1
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-f> :NERDTreeToggle<CR>
