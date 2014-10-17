@@ -78,14 +78,8 @@ map <C-f> :NERDTreeToggle<CR>
 " Easier split navigation                                                                                                                               
 "##############################################################################                                                                         
 
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>                                                                                                                       
-nmap <silent> <c-j> :wincmd j<CR>                                                                                                                       
-nmap <silent> <c-h> :wincmd h<CR>                                                                                                                       
-nmap <silent> <c-l> :wincmd l<CR>
-
-" Move the splits arround!
-nmap <silent> <c-s-k> <C-W>k                                                                                                                       
-nmap <silent> <c-s-j> <C-W>j                                                                                                                       
-nmap <silent> <c-s-h> <C-W>h                                                                                                                       
-nmap <silent> <c-s-l> <C-W>l
+" Use ctrl-[up,down ,left right] to select the active split!
+nmap <silent> <up> :wincmd k<CR>                                                                                                                       
+nmap <silent> <down> :wincmd j<CR>                                                                                                                       
+nmap <silent> <left> :wincmd h<CR>                                                                                                                       
+nmap <silent> <right> :wincmd l<CR>
