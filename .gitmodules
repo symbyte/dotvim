@@ -32,3 +32,4 @@
 [submodule "bundle/vim-move"]
 	path = bundle/vim-move
 	url = https://github.com/matze/vim-move
+    ignore = dirty
