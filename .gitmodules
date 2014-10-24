@@ -20,7 +20,7 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "auto-pairs"]
+[submodule "bundle/auto-pairs"]
 	path = auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "bundle/vim-hybrid"]
