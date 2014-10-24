@@ -23,3 +23,13 @@
 [submodule "auto-pairs"]
 	path = auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "bundle/vim-hybrid"]
+	path = bundle/vim-hybrid
+	url = https://github.com/w0ng/vim-hybrid
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-move"]
+	path = bundle/vim-move
+	url = https://github.com/matze/vim-move
+    ignore = dirty
