@@ -33,3 +33,7 @@
 	path = bundle/vim-move
 	url = https://github.com/matze/vim-move
     ignore = dirty
+[submodule "bundle/vim-indent-guides"]
+	path = bundle/vim-indent-guides
+    url = https://github.com/nathanaelkane/vim-indent-guides
+    ignore = dirty
