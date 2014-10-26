@@ -7,7 +7,7 @@ source $VIMRUNTIME/mswin.vim
 behave mswin
 let $TMP = "c:/tmp"
 
-set diffexpr=MyDiff()
+set diffexpr=""
  function MyDiff()
    let opt = '-a --binary '
    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif

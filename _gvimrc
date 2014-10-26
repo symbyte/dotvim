@@ -1,2 +1,5 @@
-
-set guifont=Anonymous_pro:h11:cANSI
+if has("win32") || has("win64")
+    set guifont=Anonymous_pro:h11:cANSI
+else 
+    set guifont=Anonymous\ Pro\ 11
+endif
