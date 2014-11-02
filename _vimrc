@@ -91,5 +91,5 @@ nnoremap tt  :tabedit<Space>
 nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
-imap ii<Esc>
+imap ii <Esc>
 let g:indent_guides_guide_size = 1
