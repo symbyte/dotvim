@@ -37,3 +37,6 @@
 	path = bundle/vim-indent-guides
     url = https://github.com/nathanaelkane/vim-indent-guides
     ignore = dirty
+[submodule "bundle/closetag.vim"]
+	path = bundle/closetag.vim
+	url = https://github.com/docunext/closetag.vim
