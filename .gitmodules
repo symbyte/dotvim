@@ -49,3 +49,6 @@
 [submodule "bundle/tern"]
 	path = bundle/tern
 	url = https://github.com/ternjs/tern_for_vim.git
+[submodule "bundle/YouCompleteMe"]
+	path = bundle/YouCompleteMe
+	url = https://github.com/Valloric/youcompleteme.git
