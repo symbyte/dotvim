@@ -52,3 +52,6 @@
 [submodule "bundle/YouCompleteMe"]
 	path = bundle/YouCompleteMe
 	url = https://github.com/Valloric/youcompleteme.git
+[submodule "bundle/typescript-syntax"]
+	path = bundle/typescript-syntax
+	url = https://github.com/leafgarland/typescript-vim.git
