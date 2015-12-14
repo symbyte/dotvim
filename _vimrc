@@ -46,7 +46,7 @@ nnoremap <leader>db :!gdb %<<cr>
 nnoremap <leader>jvc :!javac %<cr>
 nnoremap <leader>jvr :!java %<<cr>
 colors hybrid
-cd $HOME/Dropbox
+cd $HOME/
 set autochdir
 set nu!
 set rnu!
