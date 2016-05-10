@@ -93,3 +93,5 @@ nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 imap ii <Esc>
 let g:indent_guides_guide_size = 1
+let g:tsuqyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
