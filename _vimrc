@@ -95,3 +95,4 @@ imap ii <Esc>
 let g:indent_guides_guide_size = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:vim_markdown_folding_disabled = 1
