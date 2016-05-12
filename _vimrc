@@ -61,12 +61,12 @@ if has("autocmd")
 endif
 
 " For everything else, use a tab width of 4 space chars.
-set tabstop=4       " The width of a TAB is set to 4.
+set tabstop=2       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
                     " a width of 4.
-set shiftwidth=4    " Indents will have a width of 4.
-set softtabstop=4   " Sets the number of columns for a TAB.
+set shiftwidth=2    " Indents will have a width of 4.
+set softtabstop=2   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 let g:ycm_show_diagnostics_ui = 0
 set noundofile
@@ -93,5 +93,5 @@ nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 imap ii <Esc>
 let g:indent_guides_guide_size = 1
-let g:tsuqyomi_disable_quickfix = 1
+let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
