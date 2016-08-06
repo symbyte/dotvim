@@ -1,12 +1,30 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-execute pathogen#infect()
-set nocompatible
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+call plug#begin('~/.vim/plugged')
+Plug 'elmcast/elm-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'ervandew/supertab'
+Plug 'jiangmiao/auto-pairs'
+Plug 'carlitux/deoplete-ternjs'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'scrooloose/syntastic'
+Plug 'Quramy/tsuquyomi'
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+call plug#end()
+call deoplete#enable()
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
+let g:ctrlp_working_path_mode='r'
+let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint'] " You shouldn't use 'tsc' checker.
 behave mswin
 let $TMP = "c:/tmp"
-
+let g:elm_format_autosave=1
 set diffexpr=""
  function MyDiff()
    let opt = '-a --binary '
@@ -68,9 +86,7 @@ set tabstop=2       " The width of a TAB is set to 4.
 set shiftwidth=2    " Indents will have a width of 4.
 set softtabstop=2   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
-let g:ycm_show_diagnostics_ui = 0
 set noundofile
-let g:neocomplcache_enable_at_startup = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-f> :NERDTreeToggle<CR>
@@ -93,6 +109,4 @@ nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 imap ii <Esc>
 let g:indent_guides_guide_size = 1
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi']
 let g:vim_markdown_folding_disabled = 1
