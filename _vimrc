@@ -7,21 +7,22 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'alvan/vim-closetag'
+Plug 'jceb/vim-orgmode'
 Plug 'carlitux/deoplete-ternjs'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'scrooloose/syntastic'
-Plug 'Quramy/tsuquyomi'
+Plug 'w0ng/vim-hybrid'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'mhartington/deoplete-typescript', { 'do': function('DoRemote') }
 call plug#end()
 call deoplete#enable()
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
-let g:tsuquyomi_disable_quickfix = 1
-let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint'] " You shouldn't use 'tsc' checker.
 behave mswin
 let $TMP = "c:/tmp"
 let g:elm_format_autosave=1
@@ -110,3 +111,5 @@ nnoremap td  :tabclose<CR>
 imap ii <Esc>
 let g:indent_guides_guide_size = 1
 let g:vim_markdown_folding_disabled = 1
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
