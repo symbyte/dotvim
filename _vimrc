@@ -20,10 +20,8 @@ Plug 'mhartington/deoplete-typescript', { 'do': function('DoRemote') }
 call plug#end()
 call deoplete#enable()
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
-behave mswin
 let $TMP = "c:/tmp"
 let g:elm_format_autosave=1
 set diffexpr=""
@@ -112,4 +110,4 @@ imap ii <Esc>
 let g:indent_guides_guide_size = 1
 let g:vim_markdown_folding_disabled = 1
 "This unsets the "last search pattern" register by hitting return
-nnoremap <CR> :noh<CR><CR>
+nnoremap <silent> <CR> :noh<CR><CR>
