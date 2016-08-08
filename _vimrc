@@ -9,19 +9,25 @@ Plug 'leafgarland/typescript-vim'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'neomake/neomake'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'alvan/vim-closetag'
 Plug 'jceb/vim-orgmode'
+Plug 'airblade/vim-gitgutter'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'w0ng/vim-hybrid'
+Plug 'valloric/youcompleteme', { 'do': './install.py' }
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'mhartington/deoplete-typescript', { 'do': function('DoRemote') }
 call plug#end()
-call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
 source $VIMRUNTIME/vimrc_example.vim
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
+let g:gitgutter_realtime=1
+set updatetime=200
+
+au BufRead,BufNewFile,BufWritePost * Neomake
 let $TMP = "c:/tmp"
 let g:elm_format_autosave=1
 set diffexpr=""
@@ -64,7 +70,6 @@ nnoremap <leader>jvc :!javac %<cr>
 nnoremap <leader>jvr :!java %<<cr>
 colors hybrid
 cd $HOME/
-set autochdir
 set nu!
 set rnu!
 set nobackup
