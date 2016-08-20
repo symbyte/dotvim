@@ -17,6 +17,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'airblade/vim-gitgutter'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'w0ng/vim-hybrid'
+Plug 'mhartington/deoplete-typescript'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 call plug#end()
 let g:deoplete#enable_at_startup = 1
@@ -25,7 +26,18 @@ let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
 let g:gitgutter_realtime=1
 set updatetime=200
-let g:neomake_typescript_enabled_makers=['tslint']
+let g:neomake_typescript_ctsc_maker={
+        \ 'exe': 'tsc',
+        \ 'args': [
+            \ '--noEmit'
+        \ ],
+        \ 'errorformat':
+            \ '%E%f %#(%l\,%c): error %m,' .
+            \ '%E%f %#(%l\,%c): %m,' .
+            \ '%Eerror %m,' .
+            \ '%C%\s%\+%m'
+        \ }
+let g:neomake_typescript_enabled_makers=['tslint', 'ctsc']
 
 au BufRead,BufNewFile,BufWritePost * Neomake
 let $TMP = "c:/tmp"
