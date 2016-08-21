@@ -11,15 +11,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
+Plug 'Chiel92/vim-autoformat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'alvan/vim-closetag'
 Plug 'jceb/vim-orgmode'
 Plug 'airblade/vim-gitgutter'
 Plug 'carlitux/deoplete-ternjs'
 Plug 'w0ng/vim-hybrid'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'ensime/ensime-vim'
+Plug 'derekwyatt/vim-scala'
 Plug 'altercation/vim-colors-solarized'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/neopairs.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/deoplete-typescript'
@@ -34,13 +40,38 @@ source $VIMRUNTIME/vimrc_example.vim
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
 let g:gitgutter_realtime=1
-let g:tsuquyomi_disable_quickfix=1
-let g:syntastic_typescript_checkers=['tsuquyomi', 'tslint']
 let g:syntastic_always_populate_loc_list = 1
-let g:tsuquyomi_single_quote_import=1
 let g:SuperTabDefaultCompletionType = "<c-n>"
+nnoremap <localleader>f :Autoformat<CR>
+
+" scala stuff
+" ------------------------------
 autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType scala map <buffer> <localleader>t :EnType<CR>
+autocmd FileType scala map <buffer> <localleader>d :EnDocBrowse<CR>
+autocmd FileType scala map <buffer> <localleader>b :EnDeclaration<CR>
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
+" ------------------------------
+
+" typescript stuff
+" ----------------------------
+
+autocmd FileType typescript nmap <buffer> <localleader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <localleader>d :TsuReferences<CR>
+autocmd FileType typescript nmap <buffer> <localleader>r :Tsu<CR>
+autocmd FileType typescript nmap <buffer> <localleader>i :TsuImport<CR>
+autocmd FileType typescript nmap <buffer> <localleader>b :TsuDefinition<CR>
+autocmd FileType typescript nmap <buffer> <localleader>v :TsuGoBack<CR>
+let g:tsuquyomi_disable_default_mappings = 1
+let g:syntastic_typescript_checkers=['tsuquyomi', 'tslint']
+let g:tsuquyomi_single_quote_import=1
+let g:tsuquyomi_disable_quickfix=1
+autocmd FileType typescript let b:autoformat_autoindent=0
+" ----------------------------
+
 set updatetime=200
+autocmd BufWritePost *.scala silent :EnTypeCheck
 
 let $TMP = "c:/tmp"
 let g:elm_format_autosave=1
