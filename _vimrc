@@ -31,6 +31,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/deoplete-typescript'
 Plug 'Quramy/tsuquyomi'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'saltstack/salt-vim'
+Plug 'lepture/vim-jinja'
 call plug#end()
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
@@ -59,7 +61,7 @@ let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
 
 autocmd FileType typescript nmap <buffer> <localleader>t : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType typescript nmap <buffer> <localleader>d :TsuReferences<CR>
-autocmd FileType typescript nmap <buffer> <localleader>r :Tsu<CR>
+autocmd FileType typescript nmap <buffer> <localleader>r :TsuRenameSymbol<CR>
 autocmd FileType typescript nmap <buffer> <localleader>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <localleader>b :TsuDefinition<CR>
 autocmd FileType typescript nmap <buffer> <localleader>v :TsuGoBack<CR>
@@ -69,6 +71,13 @@ let g:tsuquyomi_single_quote_import=1
 let g:tsuquyomi_disable_quickfix=1
 autocmd FileType typescript let b:autoformat_autoindent=0
 " ----------------------------
+
+"  Salt stuff
+"  --------------------------------------
+syntax on
+set nocompatible
+filetype plugin indent on
+"  --------------------------------------
 
 set updatetime=200
 autocmd BufWritePost *.scala silent :EnTypeCheck
