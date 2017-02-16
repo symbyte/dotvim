@@ -33,6 +33,10 @@ Plug 'Quramy/tsuquyomi'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'saltstack/salt-vim'
 Plug 'lepture/vim-jinja'
+Plug 'symbyte/vim-angular2-snippets'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Quramy/vim-js-pretty-template'
 call plug#end()
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
@@ -46,9 +50,31 @@ let g:syntastic_always_populate_loc_list = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 nnoremap <localleader>f :Autoformat<CR>
 
+" neosnippets
+" --------------------
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+" --------------------
+
 " scala stuff
 " ------------------------------
-autocmd FileType typescript setlocal completeopt+=menu,preview
 autocmd FileType scala map <buffer> <localleader>t :EnType<CR>
 autocmd FileType scala map <buffer> <localleader>d :EnDocBrowse<CR>
 autocmd FileType scala map <buffer> <localleader>b :EnDeclaration<CR>
@@ -60,16 +86,20 @@ let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
 " ----------------------------
 
 autocmd FileType typescript nmap <buffer> <localleader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript setlocal completeopt+=menu,preview
 autocmd FileType typescript nmap <buffer> <localleader>d :TsuReferences<CR>
 autocmd FileType typescript nmap <buffer> <localleader>r :TsuRenameSymbol<CR>
 autocmd FileType typescript nmap <buffer> <localleader>i :TsuImport<CR>
 autocmd FileType typescript nmap <buffer> <localleader>b :TsuDefinition<CR>
 autocmd FileType typescript nmap <buffer> <localleader>v :TsuGoBack<CR>
+autocmd FileType typescript nmap <buffer> <localleader>j :syn clear foldBraces <bar> JsPreTmpl html<CR>
+autocmd FileType typescript nmap <buffer> <localleader>k :JsPreTmplClear<CR>
 let g:tsuquyomi_disable_default_mappings = 1
 let g:syntastic_typescript_checkers=['tsuquyomi', 'tslint']
 let g:tsuquyomi_single_quote_import=1
 let g:tsuquyomi_disable_quickfix=1
 autocmd FileType typescript let b:autoformat_autoindent=0
+let g:closetag_filenames="*.html"
 " ----------------------------
 
 "  Salt stuff
@@ -147,7 +177,7 @@ set softtabstop=2   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 set noundofile
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-f> :NERDTreeToggle<CR>
 "##############################################################################                                                                         
 " Easier split navigation                                                                                                                               
