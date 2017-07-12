@@ -1,3 +1,4 @@
+let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -12,6 +13,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Chiel92/vim-autoformat'
+Plug  'mitermayer/vim-prettier', { 
+	\ 'do': 'npm install', 
+	\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] } 
 Plug 'scrooloose/nerdcommenter'
 Plug 'alvan/vim-closetag'
 Plug 'jceb/vim-orgmode'
@@ -28,7 +32,7 @@ Plug 'Shougo/unite.vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mhartington/deoplete-typescript'
+Plug 'mhartington/nvim-typescript'
 Plug 'Quramy/tsuquyomi'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'saltstack/salt-vim'
@@ -41,14 +45,16 @@ call plug#end()
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled = 0
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1 
 source $VIMRUNTIME/vimrc_example.vim
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
 let g:gitgutter_realtime=1
 let g:syntastic_always_populate_loc_list = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
-nnoremap <localleader>f :Autoformat<CR>
+let NERDSpaceDelims=1
+nnoremap <localleader>f :Prettier<CR>
+"nnoremap <localleader>f :Autoformat<CR>
 
 " neosnippets
 " --------------------
@@ -201,3 +207,36 @@ let g:indent_guides_guide_size = 1
 let g:vim_markdown_folding_disabled = 1
 "This unsets the "last search pattern" register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
+
+if $VIM_CRONTAB == "true"
+  set nobackup
+  set nowritebackup
+endif
+
+" prettier config
+" max line lengh that prettier will wrap on
+let g:prettier#config#print_width = 80
+
+" number of spaces per indentation level
+let g:prettier#config#tab_width = 2
+
+" use tabs over spaces
+let g:prettier#config#use_tabs = 'false'
+
+" print semicolons
+let g:prettier#config#semi = 'true'
+
+" single quotes over double quotes
+let g:prettier#config#single_quote = 'true' 
+
+" print spaces between brackets
+let g:prettier#config#bracket_spacing = 'true' 
+
+" put > on the last line instead of new line
+let g:prettier#config#jsx_bracket_same_line = 'false' 
+
+" none|es5|all
+let g:prettier#config#trailing_comma = 'es5'
+
+" flow|babylon|typescript|postcss|json|graphql
+let g:prettier#config#parser = 'typescript'
