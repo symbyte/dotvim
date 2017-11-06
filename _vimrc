@@ -3,14 +3,15 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'elmcast/elm-vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Chiel92/vim-autoformat'
 Plug  'mitermayer/vim-prettier', { 
@@ -47,10 +48,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:deoplete#enable_at_startup = 1 
 source $VIMRUNTIME/vimrc_example.vim
-let g:ctrlp_working_path_mode='r'
-let g:ctrlp_custom_ignore='node_modules\|DS_Store\|git\|dist\|spec-compiled'
 let g:gitgutter_realtime=1
-let g:syntastic_always_populate_loc_list = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let NERDSpaceDelims=1
 nnoremap <localleader>f :Prettier<CR>
@@ -91,17 +89,20 @@ let g:deoplete#omni#input_patterns.scala='[^. *\t]\.\w*'
 " typescript stuff
 " ----------------------------
 
-autocmd FileType typescript nmap <buffer> <localleader>t : <C-u>echo tsuquyomi#hint()<CR>
-autocmd FileType typescript setlocal completeopt+=menu,preview
-autocmd FileType typescript nmap <buffer> <localleader>d :TsuReferences<CR>
-autocmd FileType typescript nmap <buffer> <localleader>r :TsuRenameSymbol<CR>
-autocmd FileType typescript nmap <buffer> <localleader>i :TsuImport<CR>
-autocmd FileType typescript nmap <buffer> <localleader>b :TsuDefinition<CR>
-autocmd FileType typescript nmap <buffer> <localleader>v :TsuGoBack<CR>
-autocmd FileType typescript nmap <buffer> <localleader>j :syn clear foldBraces <bar> JsPreTmpl html<CR>
-autocmd FileType typescript nmap <buffer> <localleader>k :JsPreTmplClear<CR>
+let g:ale_linters = {
+\  'typescript': ['tslint', 'tsserver'],
+\}
+
+let g:nvim_typescript#javascript_support=1
+autocmd FileType typescript,javascript nmap <buffer> <localleader>t TSType<CR>
+autocmd FileType typescript,javascript setlocal completeopt+=menu,preview
+autocmd FileType typescript,javascript nmap <buffer> <localleader>d :TSRefs<CR>
+autocmd FileType typescript,javascript nmap <buffer> <localleader>r :TSRename<CR>
+autocmd FileType typescript,javascript nmap <buffer> <localleader>i :TSImport<CR>
+autocmd FileType typescript,javascript nmap <buffer> <localleader>b :TSDef<CR>
+autocmd FileType typescript,javascript nmap <buffer> <localleader>s :TSDefPreview<CR>
+autocmd FileType typescript,javascript nmap <buffer> <localleader>a :TSDoc<CR>
 let g:tsuquyomi_disable_default_mappings = 1
-let g:syntastic_typescript_checkers=['tsuquyomi', 'tslint']
 let g:tsuquyomi_single_quote_import=1
 let g:tsuquyomi_disable_quickfix=1
 autocmd FileType typescript let b:autoformat_autoindent=0
@@ -185,6 +186,15 @@ set noundofile
 autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-f> :NERDTreeToggle<CR>
+" FZF stuff
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+nnoremap <c-p> :FZF<cr>
+nnoremap <c-b> :Buffers<cr>
+nnoremap <c-l> :Lines<cr>
+nnoremap <c-i> :Commits<cr>
 "##############################################################################                                                                         
 " Easier split navigation                                                                                                                               
 "##############################################################################                                                                         
@@ -236,7 +246,13 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false' 
 
 " none|es5|all
-let g:prettier#config#trailing_comma = 'es5'
+let g:prettier#config#trailing_comma = 'all'
 
 " flow|babylon|typescript|postcss|json|graphql
 let g:prettier#config#parser = 'typescript'
+
+" folding stuff
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
