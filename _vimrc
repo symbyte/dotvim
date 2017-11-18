@@ -9,6 +9,7 @@ Plug 'elmcast/elm-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'ervandew/supertab'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
@@ -94,7 +95,7 @@ let g:ale_linters = {
 \}
 
 let g:nvim_typescript#javascript_support=1
-autocmd FileType typescript,javascript nmap <buffer> <localleader>t TSType<CR>
+autocmd FileType typescript,javascript nmap <buffer> <localleader>t :TSType<CR>
 autocmd FileType typescript,javascript setlocal completeopt+=menu,preview
 autocmd FileType typescript,javascript nmap <buffer> <localleader>d :TSRefs<CR>
 autocmd FileType typescript,javascript nmap <buffer> <localleader>r :TSRename<CR>
@@ -191,19 +192,19 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
       \ }
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :Files<cr>!node_modules !dist 
 nnoremap <c-b> :Buffers<cr>
 nnoremap <c-l> :Lines<cr>
 nnoremap <c-i> :Commits<cr>
-"##############################################################################                                                                         
-" Easier split navigation                                                                                                                               
-"##############################################################################                                                                         
 
-" Use ctrl-[up,down ,left right] to select the active split!
-nmap <silent> <up> :wincmd k<CR>                                                                                                                       
-nmap <silent> <down> :wincmd j<CR>                                                                                                                       
-nmap <silent> <left> :wincmd h<CR>                                                                                                                       
-nmap <silent> <right> :wincmd l<CR>
+nnoremap <c-b>h :wincmd h<CR>
+nnoremap <c-b>l :wincmd l<CR>
+
+"resizing!!!
+nnoremap <Right> :vertical resize +5<cr>
+nnoremap <Down> :resize +5<cr>
+nnoremap <Up> :resize -5<cr>
+nnoremap <Left> :vertical resize -5<cr>
 nnoremap th  :tabfirst<CR>
 nnoremap tk  :tabnext<CR>
 nnoremap tj  :tabprev<CR>
@@ -212,7 +213,7 @@ nnoremap tt  :tabedit<Space>
 nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
-imap ii <Esc>
+
 let g:indent_guides_guide_size = 1
 let g:vim_markdown_folding_disabled = 1
 "This unsets the "last search pattern" register by hitting return
@@ -237,7 +238,7 @@ let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#semi = 'true'
 
 " single quotes over double quotes
-let g:prettier#config#single_quote = 'true' 
+let g:prettier#config#single_quote = 'true'
 
 " print spaces between brackets
 let g:prettier#config#bracket_spacing = 'true' 
