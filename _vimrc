@@ -53,6 +53,7 @@ let g:deoplete#enable_at_startup = 1
 let g:gitgutter_realtime=1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let NERDSpaceDelims=1
+set hidden
 
 " neosnippets
 " --------------------
@@ -288,3 +289,5 @@ nmap <leader>ps :!thyme -s<cr>
 
 " copy filename to unnamed register
 :nmap cp :let @" = expand("%")<cr>
+
+autocmd CompleteDone * pclose
